@@ -1,6 +1,6 @@
 # jpa02-eug-wong
 
-Repo: https://ucsb-cs156-f24/jpa02-eug-wong
+Repo: https://github.com/ucsb-cs156-f24/jpa02-eug-wong
 
 Deployed at: https://jpa02-eug-wong.dokku-07.cs.ucsb.edu
 
