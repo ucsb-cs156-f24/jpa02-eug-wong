@@ -75,4 +75,45 @@ public class TeamTest {
         assertEquals(team1.equals(team4), false);
         assertEquals(team1.equals(team5), false);
     }
+
+    @Test
+    public void hashCode_returns_correct_int() {
+        Team team1 = new Team("first");
+        Team team2 = new Team("first");
+        Team team3 = new Team("first");
+        Team team4 = new Team("second");
+        Team team5 = new Team("second");
+
+        ArrayList<String> firstMembers = new ArrayList<>();
+        firstMembers.add("John");
+        firstMembers.add("Ruth");
+        firstMembers.add("Vivian");
+        firstMembers.add("Kevin");
+        firstMembers.add("Smith");
+        firstMembers.add("Gordon");
+
+        ArrayList<String> secondMembers = new ArrayList<>();
+        firstMembers.add("John");
+        firstMembers.add("Ruth");
+        firstMembers.add("Vivian");
+        firstMembers.add("Kevin");
+        firstMembers.add("Smith");
+        firstMembers.add("spaghetti");     // difference
+
+        team1.setMembers(firstMembers);
+        team2.setMembers(firstMembers); // same name, same members
+        team3.setMembers(secondMembers); // same name, different members
+        team4.setMembers(firstMembers); // different name, same members
+        team5.setMembers(secondMembers); // different name, different members
+
+        assertEquals(team1.hashCode(), team2.hashCode());
+        assertEquals(team1.hashCode() == team3.hashCode(), false);
+        assertEquals(team1.hashCode() == team4.hashCode(), false);
+        assertEquals(team1.hashCode() == team5.hashCode(), false);
+
+        // edge case
+        int result = team1.hashCode();
+        int expectedResult = 1072627377;
+        assertEquals(expectedResult, result);
+    }
 }
